@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//学习类的路由组
+Route::prefix('study')->group(function (){
+    Route::get('guess/add','Study\GuessController@add');//竞猜添加页面
+    Route::post('guess/doAdd','Study\GuessController@doAdd');//竞猜添加方法
+    Route::get('guess/lists','Study\GuessController@lists');//足球竞猜列表页面
+
+});
+
 //登录页面
  Route::any("admin/login","Admin\LoginController@index");
  Route::any("admin/logout","Admin\LoginController@logout");
